@@ -1,0 +1,5 @@
+----------------Questions---------------------
+
+> package.json & package.lock.json
+>Transitive dependency 
+> npm & npx

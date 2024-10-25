@@ -1,0 +1,22 @@
+{
+  "name": "react-proj",
+  "version": "1.0.0",
+  "description": "React Proj",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Srijan Sharma",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "browserslist": [
+    "last 2 version"
+]
+}
