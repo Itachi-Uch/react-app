@@ -5,7 +5,7 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
   const { id } = useParams();
   const resInfo = useRestaurantMenu(id);
-  if (resInfo === null) {
+  if (!resInfo) {
     return <Shimmer />;
   }
   const { name, cuisines, costForTwoMessage } =
