@@ -1,11 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 const Header = () => {
   let [btnName, setbtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(userContext);
+  //we are here Subscribing to the store using selector
   return (
     <div className="header flex justify-between bg-red-400 shadow-xl">
       <div className="logo-container w-36">
@@ -15,9 +18,11 @@ const Header = () => {
       </div>
       <div className="nav-bar flex items-center">
         <ul className="flex">
-          <li className="px-4 text-gray-50 hover:text-black">
-            Status: {onlineStatus ? "Online ✅" : "Offline ❌"}
-          </li>
+          {
+            <li className="px-4 text-gray-50 hover:text-black">
+              Status: {onlineStatus ? "Online ✅" : "Offline ❌"}
+            </li>
+          }
           <li className="px-4 text-gray-50 hover:text-black">
             <Link to={"/"}>Home</Link>
           </li>
@@ -31,7 +36,7 @@ const Header = () => {
             <Link to={"/contact"}>Contact Us</Link>
           </li>
           <li className="px-4 text-gray-50 hover:text-black">
-            <Link>Cart</Link>
+            <Link>Cart - items</Link>
           </li>
         </ul>
         <div className="px-4 text-gray-50 hover:text-black">
@@ -44,6 +49,9 @@ const Header = () => {
             {btnName}
           </button>
         </div>
+        <ul>
+          <li className="px-4 text-gray-50 hover:text-black">{loggedInUser}</li>
+        </ul>
       </div>
     </div>
   );
