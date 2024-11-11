@@ -1,4 +1,4 @@
-import RestaurentCard, { withPromotedlabel } from "../RestaurentCard";
+import RestaurentCard, { withPromotedlabel } from "./RestaurentCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
@@ -18,14 +18,14 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0473216&lng=73.0699046&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     let json = await data.json();
-    console.log(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-    );
+    console.log(json.data);
     setresList(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      // json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants
     );
     setfilteredres(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      // json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants
     );
   };
   const onlineStatus = useOnlineStatus();
@@ -43,14 +43,14 @@ const Body = () => {
         className="inputText border border-black m-2 rounded-md"
         value={searchText}
         onChange={(e) => {
-          setSearchText(e.target.value);
+          setSearchText(e.target.value).toLowerCase();
         }}
       ></input>
       <button
         className="search  mx-4 px-4 bg-red-500 rounded-xl text-gray-50 hover:bg-red-400"
         onClick={() => {
           let filteredRes = resList.filter((res) =>
-            res.info.name.toLowerCase().includes(searchText.toLowerCase())
+            res.info.name.toLowerCase().includes(searchText)
           );
           setfilteredres(filteredRes);
         }}
