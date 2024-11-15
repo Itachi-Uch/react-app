@@ -1,12 +1,20 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ itemName }) => {
-  console.log(itemName);
-
+  const dispatch = useDispatch();
+  const handleCartItems = (item) => {
+    //Dispatch an action
+    dispatch(addItem(item));
+  };
   return (
     <div>
       {itemName.map((itm) => (
-        <div className="flex justify-between border-b-2 border-gray-300">
+        <div
+          key={itm.card.info.id}
+          className="flex justify-between border-b-2 border-gray-300"
+        >
           <div className=" text-left p-4 w-9/12 ">
             <div>
               <span className="">{itm.card.info.name}</span>
@@ -20,8 +28,10 @@ const ItemList = ({ itemName }) => {
           </div>
           <div className="w-3/12 py-4">
             <div className="absolute">
-              <button className=" bg-white text-black font-bold rounded-sm">
-                {" "}
+              <button
+                className=" bg-white text-black font-bold rounded-sm"
+                onClick={() => handleCartItems(itm)}
+              >
                 Add +
               </button>
             </div>

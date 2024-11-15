@@ -20,12 +20,12 @@ const Body = () => {
     let json = await data.json();
     console.log(json.data);
     setresList(
-      // json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-      json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      // json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants
     );
     setfilteredres(
-      // json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-      json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      // json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants
     );
   };
   const onlineStatus = useOnlineStatus();
@@ -43,7 +43,7 @@ const Body = () => {
         className="inputText border border-black m-2 rounded-md"
         value={searchText}
         onChange={(e) => {
-          setSearchText(e.target.value).toLowerCase();
+          setSearchText(e.target.value.toLowerCase());
         }}
       ></input>
       <button
